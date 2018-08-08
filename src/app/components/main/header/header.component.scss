@@ -1,0 +1,39 @@
+mat-toolbar{
+  padding: 30px;
+  height: 100px;
+  background: transparent;
+}
+
+.header-container{
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0 50px;
+  text-transform: uppercase;
+  color: #fff;
+
+}
+
+.header-logo {
+  flex: 1;
+  font-family: DosisBold, sans-serif;
+  font-size: 1.5em;
+}
+
+.header-links {
+  flex: 1;
+  font-family: Dosis, sans-serif;
+  font-weight: 600;
+}
+
+.header-links-list {
+  display: inline-flex;
+  list-style: none;
+
+  & > li:not(:last-child) {
+    padding-right: 50px;
+  }
+}
+
+

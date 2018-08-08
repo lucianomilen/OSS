@@ -1,0 +1,11 @@
+<form class="example-form">
+  <mat-form-field floatLabel="never" class="example-full-width">
+    <input class="custom-input" matInput type="text" placeholder="Pick one" aria-label="Number" [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
