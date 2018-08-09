@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -11,7 +12,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatFormFieldModule, MatAutocompleteModule, MatToolbarModule, MatInputModule} from '@angular/material';
 import {SearchbarComponent} from "./components/searchbar/searchbar.component";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AboutComponent } from './components/about/about.component';
 
+
+const appRoutes: Routes = [
+  { path: 'about', component: AboutComponent },
+  { path: '', component: MainComponent},
+  // { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -20,11 +28,16 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MainComponent,
     FooterComponent,
     SearchbarComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     MatButtonModule,
     MatToolbarModule,
     MatFormFieldModule,
