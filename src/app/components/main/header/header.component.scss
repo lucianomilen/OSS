@@ -36,4 +36,11 @@ mat-toolbar{
   }
 }
 
-
+@media screen and (max-width: 600px) {
+  .header-logo, .header-links-list {
+    font-size: 4vw;
+  }
+  .header-container, mat-toolbar{
+    padding: 0 3vw;
+  }
+}

@@ -14,3 +14,15 @@
   font-family: FiraSansLight, sans-serif;
   font-size: 2em;
 }
+
+@media screen and (max-width: 600px) {
+  .main-container {
+    padding: 10vw;
+  }
+  .main-title {
+    font-size: 8vw;
+  }
+  .main-subtitle {
+    font-size: 4vw;
+  }
+}
