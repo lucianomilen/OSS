@@ -1,0 +1,31 @@
+mat-toolbar {
+  padding: 0 80px;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1040px) {
+  .footer-toolbar{
+    display: none;
+  }
+}
+
+.footer-logo-image, .footer-logo-container{
+  height: 100%;
+}
+
+.footer-info-links {
+  display: inline-flex;
+  list-style: none;
+  font-size: 0.6em;
+  & > li:not(:last-child) {
+    padding-right: 50px;
+  }
+  & > li {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.footer-info-links-text{
+  padding-left: 0.7em;
+}
