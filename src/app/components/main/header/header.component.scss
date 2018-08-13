@@ -32,7 +32,15 @@ mat-toolbar{
   list-style: none;
 
   & > li:not(:last-child) {
-    padding-right: 50px;
+    padding-right: 30px;
+  }
+}
+
+.header-links-list-item > a {
+  padding: 10px 15px;
+  transition: background 300ms;
+  &:hover {
+    background: rgba(221, 221, 221, 0.2);
   }
 }
 
@@ -42,5 +50,9 @@ mat-toolbar{
   }
   .header-container, mat-toolbar{
     padding: 0 3vw;
+  }
+
+  .header-links-list > li:not(:last-child) {
+    padding-right: 10px;
   }
 }

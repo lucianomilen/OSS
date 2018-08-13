@@ -1,5 +1,14 @@
-.custom-input{
+/*.custom-input{*/
+  /*background: #fff;*/
+  /*color: #000;*/
+/*}*/
+
+.searchbar-container {
   background: #fff;
-  color: #000;
+  margin-top: 30px;
 }
 
+.searchbar{
+  width: 90%;
+  color: #000;
+}

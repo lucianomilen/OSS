@@ -3,15 +3,37 @@ mat-toolbar {
   justify-content: space-between;
 }
 
-@media screen and (max-width: 1040px) {
-  .footer-toolbar{
-    display: none;
-  }
+.footer-toolbar-mobile{
+  display: none;
 }
 
 .footer-logo-image, .footer-logo-container{
   height: 100%;
 }
+
+
+@media screen and (max-width: 1040px) {
+  .footer-info-links{
+    display: flex;
+    flex-flow: column;
+  }
+
+  .footer-toolbar-desktop {
+    height: 100px;
+    padding: 0 50px;
+  }
+  .footer-logo-container{
+    height: 70%;
+  }
+
+}
+
+@media screen and (max-width: 693px) {
+  .footer-toolbar-desktop {
+    display: none;
+  }
+}
+
 
 .footer-info-links {
   display: inline-flex;
@@ -28,4 +50,10 @@ mat-toolbar {
 
 .footer-info-links-text{
   padding-left: 0.7em;
+  font-size: 0.9em;
+}
+
+.footer-icon {
+  width: 20px;
+  height: 20px;
 }

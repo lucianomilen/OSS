@@ -1,32 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {Observable} from "rxjs";
-import {map, startWith} from "rxjs/operators";
+import {debounceTime} from "rxjs/operators";
+import {RepositoryService} from "../../services/RepositoryService";
 
 
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
-  styleUrls: ['./searchbar.component.css']
+  styleUrls: ['./searchbar.component.css'],
+  providers: [RepositoryService]
 })
 export class SearchbarComponent implements OnInit {
+  searchTerm: FormControl = new FormControl();
 
-  constructor() { }
+  searchResult = [];
 
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+  onRepositorySelection(repository) {
+    // this.service.getRepositoryInfo(repository);
+    console.log(repository);
   }
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  constructor(private repositoryService: RepositoryService) {
+    this.searchTerm.valueChanges.pipe(
+      debounceTime(400))
+      .subscribe(data => {
+        // this.service.search_word(data).subscribe(response => {
+        //   console.log(response)
+        //   this.searchResult = response
+        // })
+        this.searchResult = this.repositoryService.search_word(data);
+        // console.log(this.searchResult)
+      })
+  }
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  ngOnInit(): void {
   }
 }
+

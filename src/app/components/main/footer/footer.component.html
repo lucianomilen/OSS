@@ -1,27 +1,37 @@
-<mat-toolbar class="footer-toolbar">
+<mat-toolbar class="footer-toolbar-desktop">
   <div class="footer-logo-container">
     <img class="footer-logo-image" src="/assets/images/logo-aserg.png" alt="">
   </div>
   <div class="footer-info-container">
     <ul class="footer-info-links">
       <li class="footer-info-links-address">
-        <i-map-pin></i-map-pin>
+        <i-map-pin class="footer-icon"></i-map-pin>
         <span class="footer-info-links-text">
           Universidade Federal de Minas Gerais
         </span>
       </li>
       <li class="footer-info-links-phone">
-        <i-phone></i-phone>
+        <i-phone class="footer-icon"></i-phone>
         <span class="footer-info-links-text">
           +55 31 3409 0000
         </span>
       </li>
       <li class="footer-info-links-email">
-        <i-mail></i-mail>
+        <i-mail class="footer-icon"></i-mail>
         <span class="footer-info-links-text">
           dcc@dcc.ufmg.br
         </span>
       </li>
     </ul>
   </div>
+</mat-toolbar>
+
+<mat-toolbar class="footer-toolbar-mobile">
+  <mat-toolbar-row>
+    <span>First Row</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Second Row</span>
+  </mat-toolbar-row>
 </mat-toolbar>

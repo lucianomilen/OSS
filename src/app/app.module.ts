@@ -14,6 +14,7 @@ import {SearchbarComponent} from './components/searchbar/searchbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import {IconsModule} from './icons.module';
+import { HttpModule } from '@angular/http';
 
 
 const appRoutes: Routes = [
@@ -35,11 +36,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
     ),
     MatButtonModule,
     MatToolbarModule,

@@ -26,6 +26,7 @@
     "@angular/service-worker": "^6.1.0",
     "angular-feather": "^5.3.0",
     "core-js": "^2.5.4",
+    "lodash": "^4.17.10",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26"
   },
