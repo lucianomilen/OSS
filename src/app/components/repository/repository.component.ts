@@ -15,7 +15,6 @@ export class RepositoryComponent implements OnInit {
     this.repositoryService.selectedRepository.subscribe(repository => this.repositoryMetrics = repository );
     this.repositoryService.repositoryInfo.subscribe(repository => {
       this.repositoryInfo = repository;
-      console.log(this.repositoryInfo);
     });
   }
 
