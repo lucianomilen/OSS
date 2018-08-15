@@ -15,11 +15,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import {IconsModule} from './icons.module';
 import { HttpModule } from '@angular/http';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { RepositoryComponent } from './components/repository/repository.component';
 
 
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'about',   redirectTo: 'about', pathMatch: 'full' },
+  { path: 'repository', component: RepositoryComponent },
+  { path: 'repository',   redirectTo: 'repository', pathMatch: 'full' },
   { path: '', component: MainComponent},
 
   // { path: '**', component: PageNotFoundComponent }
@@ -33,6 +37,7 @@ const appRoutes: Routes = [
     FooterComponent,
     SearchbarComponent,
     AboutComponent,
+    RepositoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,8 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    IconsModule
+    IconsModule,
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

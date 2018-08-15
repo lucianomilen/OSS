@@ -1,0 +1,20 @@
+<div class="repository-container">
+  <div>
+    From GitHub API:
+  </div>
+  <div class="repository-title">
+    {{repositoryInfo.full_name}}
+  </div>
+  <div>
+    {{repositoryInfo.git_url}}
+  </div>
+  <div>
+    --------
+  </div>
+  <div>
+    From local JSON file:
+  </div>
+  <div class="repository-basic-info">
+    {{repositoryMetrics | json}}
+  </div>
+</div>
