@@ -13,7 +13,7 @@ export class RepositoryComponent implements OnInit {
   repositoryInfo: any;
   ngOnInit() {
     this.repositoryService.selectedRepository.subscribe(repository => this.repositoryMetrics = repository );
-    this.repositoryService.repositoryInfo.subscribe(repository => {
+    this.repositoryService.getRepositoryInfo(this.repositoryMetrics.ID).then(repository => {
       this.repositoryInfo = repository;
     });
   }

@@ -1,6 +1,11 @@
 .repository-container {
   background: #fff;
   width: 80vw;
-  height: 70vh;
+  height: 100%;
   box-shadow: 0 0 4px black;
+  overflow: auto;
+}
+
+.repository-title{
+  text-align: center;
 }
