@@ -1,32 +1,51 @@
 <div class="repository-container">
-  <div *ngIf="repositoryInfo; else loading">
-    <div>
-      From GitHub API:
-    </div>
-    <h2 class="repository-title">
+  <div class="repository-main-info">
+    <h2 *ngIf="repositoryInfo" class="repository-title">
       full_name: {{repositoryInfo.full_name}}
     </h2>
-    <div>
-      git_url: {{repositoryInfo.git_url}}
-    </div>
-    <div>
-      name: {{repositoryInfo.name}}
-    </div>
-    <div>
-      language: {{repositoryInfo.language}}
-    </div>
-    <div>
-      starsgazers_count{{repositoryInfo.stargazers_count}}
-    </div>
-    --------
-    <div>
-      From local JSON file:
-    </div>
-    <div class="repository-basic-info">
-      {{repositoryMetrics | json}}
-    </div>
   </div>
-  <ng-template #loading>
-    <h4>Loading...</h4>
-  </ng-template>
+
+  <div class="repository-basic-info">
+
+    <div *ngIf="repositoryInfo; else loading">
+      <p class="repository-section-title">
+        Basic Info
+      </p>
+      <p>
+        language: {{repositoryInfo.language}}
+      </p>
+      <p>
+        created at: {{repositoryInfo.created_at | date}}
+      </p>
+      <p>
+        starsgazers_count: {{repositoryInfo.stargazers_count}}
+      </p>
+      <p>
+        forks count: {{repositoryInfo.forks_count}}
+      </p>
+      <p>
+        license key: {{repositoryInfo.license.key}}
+      </p>
+    </div>
+
+    <ng-template #loading>
+      <h4>Loading...</h4>
+    </ng-template>
+
+  </div>
+  <div class="repository-metrics">
+    <p class="repository-section-title">
+      Metrics Info
+    </p>
+    <p>LMA_0: {{repositoryMetrics.LMA_0}}</p>
+    <p>LMA_1: {{repositoryMetrics.LMA_1}}</p>
+    <p>LMA_2: {{repositoryMetrics.LMA_2}}</p>
+    <p>LMA_3: {{repositoryMetrics.LMA_3}}</p>
+  </div>
+
+  <div class="repository-charts-container">
+
+  </div>
+
+
 </div>

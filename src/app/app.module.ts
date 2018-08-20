@@ -22,8 +22,7 @@ import { RepositoryComponent } from './components/repository/repository.componen
 const appRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'about',   redirectTo: 'about', pathMatch: 'full' },
-  { path: 'repository', component: RepositoryComponent },
-  { path: 'repository',   redirectTo: 'repository', pathMatch: 'full' },
+  { path: 'repository/:id', component: RepositoryComponent },
   { path: '', component: MainComponent},
 
   // { path: '**', component: PageNotFoundComponent }

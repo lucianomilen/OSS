@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {catchError, debounceTime, distinctUntilChanged, switchMap, tap} from "rxjs/operators";
-import {RepositoryService} from "../../services/RepositoryService";
-import {concat, Observable, of, Subject} from "rxjs";
-import {Router} from "@angular/router";
+import {FormControl} from '@angular/forms';
+import {catchError, debounceTime, distinctUntilChanged, switchMap, tap} from 'rxjs/operators';
+import {RepositoryService} from '../../services/RepositoryService';
+import {concat, Observable, of, Subject} from 'rxjs';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class SearchbarComponent implements OnInit {
 
   onRepositorySelection(repository) {
     this.repositoryService.setSelectedRepository(repository);
-    this.router.navigate(['/repository']);
+    this.router.navigate([`/repository/${repository.ID}`]);
   }
 
   loadRepositories() {
