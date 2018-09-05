@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RepositoryService} from '../../services/RepositoryService';
 
@@ -9,32 +9,15 @@ import {RepositoryService} from '../../services/RepositoryService';
 })
 export class RepositoryComponent implements OnInit {
 
-  constructor(private repositoryService: RepositoryService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private repositoryService: RepositoryService, private activatedRoute: ActivatedRoute, private router: Router) {
+  }
+
   repositoryMetrics: any;
   repositoryInfo: any;
   chartData: any;
-  ngOnInit() {
-    this.repositoryService.selectedRepository.subscribe(repository => {
-      this.repositoryMetrics = repository;
-      this.chartData = Object.keys(repository).map(function(key) {
-      return repository[key];
-    });
 
-      this.chartData.splice(0, 2);
+  public lineChartData: Array<any>;
 
-      if (!repository.ID) {
-        this.router.navigate([`/`]);
-        // this.repositoryMetrics.ID = this.activatedRoute.snapshot.params.id;
-      }
-    });
-    this.repositoryService.getRepositoryInfo(this.repositoryMetrics.ID).then(repository => {
-      this.repositoryInfo = repository;
-    });
-  }
-
-  public lineChartData: Array<any> = [
-    {data: [0], label: 'LMA'},
-  ];
   public lineChartLabels: Array<any> = ['LMA0', 'LMA1', 'LMA2', 'LMA3'];
   public lineChartOptions: any = {
     responsive: true,
@@ -47,15 +30,35 @@ export class RepositoryComponent implements OnInit {
       }]
     }
   };
-  
+
   public lineChartLegend = true;
   public lineChartType = 'line';
+  dataReady: boolean = false;
 
-  public randomize(): void {
-    console.log(this.chartData);
-    this.lineChartData = this.chartData;
+  ngOnInit() {
+    this.repositoryService.selectedRepository.subscribe(repository => {
+      this.repositoryMetrics = repository;
+
+      this.chartData = Object.keys(repository).map(function (key) {
+        return repository[key];
+      });
+
+      this.chartData.splice(0, 2);
+
+      this.lineChartData = [
+        {data: this.chartData, label: 'teste'},
+      ];
+
+      this.dataReady = true;
+
+      if (!repository.ID) {
+        this.router.navigate([`/`]);
+        // this.repositoryMetrics.ID = this.activatedRoute.snapshot.params.id;
+      }
+    });
+    this.repositoryService.getRepositoryInfo(this.repositoryMetrics.ID).then(repository => {
+      this.repositoryInfo = repository;
+    });
   }
-
-  // events
 
 }
