@@ -37,7 +37,7 @@ export class RepositoryService {
 
   search_word(term = null) {
     if (term) {
-      let items = repositories.filter(rep => rep.Projects.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1);
+      let items = repositories.filter(rep => rep.Repository.toLocaleLowerCase().indexOf(term.toLocaleLowerCase()) > -1);
       return of(items);
     }
     else return [];

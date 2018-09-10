@@ -39,9 +39,13 @@ export class RepositoryComponent implements OnInit {
     this.repositoryService.selectedRepository.subscribe(repository => {
       this.repositoryMetrics = repository;
 
+      console.log(this.repositoryMetrics);
+
       this.chartData = Object.keys(repository).map(function (key) {
         return repository[key];
       });
+
+      console.log(this.chartData);
 
       this.chartData.splice(0, 2);
 
