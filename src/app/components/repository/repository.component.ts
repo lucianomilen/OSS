@@ -14,7 +14,7 @@ export class RepositoryComponent implements OnInit {
 
   repositoryMetrics: any;
   repositoryInfo: any;
-  chartData: any;
+  lmaData: any;
 
   public lineChartData: Array<any>;
 
@@ -34,6 +34,11 @@ export class RepositoryComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
   dataReady: boolean = false;
+  commitsData = [];
+  forksData = [];
+  issuesData = [];
+  pullsData = [];
+
 
   ngOnInit() {
     this.repositoryService.selectedRepository.subscribe(repository => {
@@ -41,16 +46,27 @@ export class RepositoryComponent implements OnInit {
 
       console.log(this.repositoryMetrics);
 
-      this.chartData = Object.keys(repository).map(function (key) {
+      for(let i = 1; i <= 8; i++){
+          this.commitsData.push(this.repositoryMetrics[`Commits_${i}`]);
+          this.forksData.push(this.repositoryMetrics[`Forks_${i}`]);
+          this.issuesData.push(this.repositoryMetrics[`Issues_${i}`]);
+          this.pullsData.push(this.repositoryMetrics[`Pulls_${i}`]);
+      }
+
+      // console.log(this.commitsData, this.forksData, this.issuesData, this.pullsData)
+
+      this.lmaData = Object.keys(repository).map(function (key) {
         return repository[key];
       });
 
-      console.log(this.chartData);
-
-      this.chartData.splice(0, 2);
+      this.lmaData.splice(0, 2);
 
       this.lineChartData = [
-        {data: this.chartData, label: 'teste'},
+        {data: this.lmaData, label: 'LMA'},
+        {data: this.forksData, label: 'forks'},
+        {data: this.commitsData, label: 'commits'},
+        {data: this.issuesData, label: 'issues'},
+        {data: this.pullsData, label: 'pulls'},
       ];
 
       this.dataReady = true;
