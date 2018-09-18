@@ -56,7 +56,7 @@ export class RepositoryComponent implements OnInit {
     this.repositoryService.selectedRepository.subscribe(repository => {
       this.repositoryMetrics = repository;
 
-      console.log(this.repositoryMetrics);
+      // console.log(this.repositoryMetrics);
 
       for (let i = 1; i <= 8; i++) {
           this.commitsData.push(this.repositoryMetrics[`Commits_${i}`]);
