@@ -16,10 +16,11 @@ export class RepositoryComponent implements OnInit {
   repositoryInfo: any;
   lmaData: any;
 
-  public lineChartData: Array<any>;
+  public repInfoChartData: Array<any>;
+  lmaChartData = [];
 
-  public lineChartLabels: Array<any> = ['LMA0', 'LMA1', 'LMA2', 'LMA3'];
-  public lineChartOptions: any = {
+  public lmaChartLabels: Array<any> = ['LMA0', 'LMA1', 'LMA2', 'LMA3'];
+  public lmaChartOptions: any = {
     responsive: true,
     scales: {
       yAxes: [{
@@ -31,9 +32,20 @@ export class RepositoryComponent implements OnInit {
     }
   };
 
-  public lineChartLegend = true;
-  public lineChartType = 'line';
-  dataReady: boolean = false;
+  public repInfoChartLabels: Array<any> = ['8p', '7p', '6p', '5p', '4p', '3p', '2p', '1p'];
+  public repInfoChartOptions: any = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 100
+        }
+      }]
+    }
+  };
+
+  dataReady = false;
   commitsData = [];
   forksData = [];
   issuesData = [];
@@ -46,7 +58,7 @@ export class RepositoryComponent implements OnInit {
 
       console.log(this.repositoryMetrics);
 
-      for(let i = 1; i <= 8; i++){
+      for (let i = 1; i <= 8; i++) {
           this.commitsData.push(this.repositoryMetrics[`Commits_${i}`]);
           this.forksData.push(this.repositoryMetrics[`Forks_${i}`]);
           this.issuesData.push(this.repositoryMetrics[`Issues_${i}`]);
@@ -61,12 +73,15 @@ export class RepositoryComponent implements OnInit {
 
       this.lmaData.splice(0, 2);
 
-      this.lineChartData = [
-        {data: this.lmaData, label: 'LMA'},
+      this.repInfoChartData = [
         {data: this.forksData, label: 'forks'},
         {data: this.commitsData, label: 'commits'},
         {data: this.issuesData, label: 'issues'},
         {data: this.pullsData, label: 'pulls'},
+      ];
+
+      this.lmaChartData = [
+        {data: this.lmaData, label: 'LMA'},
       ];
 
       this.dataReady = true;
