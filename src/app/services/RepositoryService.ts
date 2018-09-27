@@ -26,13 +26,9 @@ export class RepositoryService {
     this.selectedRepositorySource.next(repository);
   }
 
-  async getRepositoryInfo(repositoryID){
+  async getRepositoryInfo(repositoryID) {
     const request = await fetch(`${this.url}${repositoryID}`);
     return await request.json();
-  }
-
-  getRepInfo() {
-    return this.repositoryInfo;
   }
 
   search_word(term = null) {

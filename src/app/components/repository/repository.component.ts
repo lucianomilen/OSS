@@ -56,7 +56,7 @@ export class RepositoryComponent implements OnInit {
     this.repositoryService.selectedRepository.subscribe(repository => {
       this.repositoryMetrics = repository;
 
-      // console.log(this.repositoryMetrics);
+      console.log(this.repositoryMetrics);
 
       for (let i = 1; i <= 8; i++) {
           this.commitsData.push(this.repositoryMetrics[`Commits_${i}`]);
@@ -84,11 +84,18 @@ export class RepositoryComponent implements OnInit {
         {data: this.lmaData, label: 'LMA'},
       ];
 
-      this.dataReady = true;
 
       if (!repository.ID) {
-        this.router.navigate([`/`]);
+        // this.router.navigate([`/`]);
+        const tmpRep = {
+          ID: this.activatedRoute.snapshot.params.id
+        }
+        this.repositoryService.setSelectedRepository(tmpRep)
         // this.repositoryMetrics.ID = this.activatedRoute.snapshot.params.id;
+      }
+
+      else {
+        this.dataReady = true;
       }
     });
     this.repositoryService.getRepositoryInfo(this.repositoryMetrics.ID).then(repository => {
