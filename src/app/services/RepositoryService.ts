@@ -38,4 +38,11 @@ export class RepositoryService {
     }
     else return [];
   }
+
+  async retrieveRepositoryFromJson(id){
+      return await repositories.filter(rep => {
+        // console.log(rep.ID, id)
+        return rep.ID.toString() === id
+      })
+  }
 }
