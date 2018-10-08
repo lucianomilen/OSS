@@ -14,7 +14,7 @@ import {SearchbarComponent} from './components/searchbar/searchbar.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AboutComponent } from './components/about/about.component';
 import {IconsModule} from './icons.module';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RepositoryComponent } from './components/repository/repository.component';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -41,7 +41,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     RouterModule.forRoot(

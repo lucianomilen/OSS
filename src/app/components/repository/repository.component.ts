@@ -75,7 +75,7 @@ export class RepositoryComponent implements OnInit {
       this.pullsData.push(this.repositoryMetrics[`Pulls_${i}`]);
     }
     if (repository) {
-      this.lmaData = Object.keys(repository).map(function (key) {
+      this.lmaData = Object.keys(repository).map( key => {
         return repository[key];
       });
 
@@ -114,7 +114,7 @@ export class RepositoryComponent implements OnInit {
         this.dataReady = true;
       }
     });
-    this.repositoryService.getRepositoryInfo(this.repositoryMetrics.ID).then(repository => {
+    this.repositoryService.getRepositoryInfo(this.repositoryMetrics.ID).subscribe(repository => {
       this.repositoryInfo = repository;
     });
   }

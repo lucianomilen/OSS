@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {BehaviorSubject, of} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, of, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 declare var require: any;
 let repositories = require('../../assets/data/repositories.json');
@@ -9,26 +10,32 @@ let repositories = require('../../assets/data/repositories.json');
 export class RepositoryService {
 
   url: string;
+  repositoryID: string;
   private selectedRepositorySource: any = new BehaviorSubject({});
   selectedRepository = this.selectedRepositorySource.asObservable();
 
   private repositoryInfoSource: any = new BehaviorSubject({message: 'default'});
   repositoryInfo = this.repositoryInfoSource.asObservable();
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
     this.url = 'https://api.github.com/repositories/';
   }
 
   setSelectedRepository(repository) {
-    this.getRepositoryInfo(repository.ID).then(data => {
+    this.getRepositoryInfo(repository.ID).subscribe(data => {
       this.repositoryInfo = this.repositoryInfoSource.next(data);
     });
     this.selectedRepositorySource.next(repository);
   }
 
-  async getRepositoryInfo(repositoryID) {
-    const request = await fetch(`${this.url}${repositoryID}`);
-    return await request.json();
+  // async getRepositoryInfo(repositoryID) {
+  //   this.repositoryID = repositoryID;
+  //   const request = await fetch(`${this.url}${repositoryID}`);
+  //   return await request.json();
+  // }
+
+  getRepositoryInfo(repositoryID):Observable<any> {
+    return this.http.get(`${this.url}${repositoryID}`);
   }
 
   search_word(term = null) {
@@ -45,4 +52,7 @@ export class RepositoryService {
         return rep.ID.toString() === id
       })
   }
+
+
+
 }
