@@ -8,5 +8,5 @@ import {RepositoryService} from "./services/RepositoryService";
   providers: [RepositoryService]
 })
 export class AppComponent {
-  title = 'OSS';
+  title = 'isMaintained?';
 }

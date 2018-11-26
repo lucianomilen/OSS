@@ -7,5 +7,5 @@ import {SearchbarComponent} from "../searchbar/searchbar.component";
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  title:string = 'OSS';
+  title:string = 'isMaintained?';
 }

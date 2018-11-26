@@ -21,6 +21,11 @@ mat-toolbar{
   font-size: 1.5em;
 }
 
+.header-logo-img {
+  filter: invert(100%);
+  height: 50px;
+}
+
 .header-links {
   flex: 1;
   font-family: Dosis, sans-serif;

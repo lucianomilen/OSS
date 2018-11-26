@@ -19,7 +19,7 @@ export class RepositoryComponent implements OnInit {
   public repInfoChartData: Array<any>;
   lmaChartData = [];
 
-  public lmaChartLabels: Array<any> = ['LMA0', 'LMA1', 'LMA2', 'LMA3'];
+  public lmaChartLabels: Array<any> = ['LMA3', 'LMA2', 'LMA1', 'LMA0'];
   public lmaChartOptions: any = {
     responsive: true,
     scales: {
